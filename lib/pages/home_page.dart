@@ -15,7 +15,9 @@ import 'package:text_contact_list/pages/new_contact_page.dart';
        body: const Center(
          child: Text('Home Page'),
        ),
-       floatingActionButton: FloatingActionButton(onPressed: (){
+       floatingActionButton: FloatingActionButton(
+           child: const Icon(Icons.add_circle),
+           onPressed: (){
          Navigator.pushNamed(context, NewContactPage.routeName);
        }),
      );

@@ -1,10 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:text_contact_list/pages/details_page.dart';
 import 'package:text_contact_list/pages/home_page.dart';
 import 'package:text_contact_list/pages/new_contact_page.dart';
+import 'package:text_contact_list/providers/contact_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => ContactProvider(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

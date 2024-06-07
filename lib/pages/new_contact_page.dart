@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:text_contact_list/models/contact_model.dart';
+import 'package:text_contact_list/providers/contact_provider.dart';
 
 class NewContactPage extends StatefulWidget {
   const NewContactPage({super.key});
@@ -107,10 +110,19 @@ class _NewContactPageState extends State<NewContactPage> {
 
   void _saveContact() {
    if(formKey.currentState!.validate()){
-     // Navigator.pop(context, {
-     //   'name': nameController.text,
-     //   'number': numberController.text
-     // });
+
+        final name = nameController.text;
+        final number = numberController.text;
+        final email = emailController.text;
+        final address = addressController.text;
+        final website = websiteController.text;
+        final contact = ContactModel(name: name, number: number, email: email, address: address, website: website);
+        context.read<ContactProvider>()
+            .addContact(contact)
+            .then((value) => Navigator.pop(context))
+            .catchError((onError) => print(onError.toString()));
+
+
    }
   }
 }
