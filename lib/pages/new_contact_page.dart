@@ -56,6 +56,25 @@ class _NewContactPageState extends State<NewContactPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: numberController,
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                      if(value == null || value.isEmpty){
+                        return 'Please enter contact number';
+                      }
+                      return null;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: 'Contact number',
+                      border: OutlineInputBorder(),
+                    filled: true,
+                    prefixIcon: Icon(Icons.phone),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
                   controller: emailController,
                   validator: (value) {
 
